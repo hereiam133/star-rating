@@ -146,8 +146,10 @@ A Polymer element for star ratings.
       },
       clear: function() {
         var indexOld = (this.rate * -1) + this.stars;
-        Polymer.dom(this.root).querySelector('[data-index="'+ indexOld +'"]').classList.remove("active");
-        this.rate = 0;
+        if (Polymer.dom(this.root).querySelector('[data-index="'+ indexOld +'"]')) {
+          Polymer.dom(this.root).querySelector('[data-index="'+ indexOld +'"]').classList.remove("active");
+          this.rate = 0;
+        }
       },
       isCustom: function() {
           return this.customcharicon;
